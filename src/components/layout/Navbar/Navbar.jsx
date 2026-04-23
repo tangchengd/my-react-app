@@ -2,6 +2,13 @@ import { NavLink } from "react-router-dom";
 import { navRoutes } from "../../../router/routes";
 import "./Navbar.css";
 
+// 功能：判断一级菜单是否应该处于激活状态。
+// 参数：
+// - pathname: 当前浏览器地址路径，例如 /study/hooks。
+// - routePath: 一级菜单路径，例如 /study。
+// 返回：
+// - true：当前一级菜单应高亮。
+// - false：当前一级菜单不高亮。
 function isRouteActive(pathname, routePath) {
   if (routePath === "/") {
     return pathname === "/";
@@ -10,6 +17,10 @@ function isRouteActive(pathname, routePath) {
   return pathname === routePath || pathname.startsWith(`${routePath}/`);
 }
 
+// 功能：渲染顶部固定导航栏，并根据 navRoutes 自动生成普通菜单和下拉菜单。
+// 参数：
+// - pathname: 当前页面路径，用于判断菜单激活状态。
+// 返回：顶部导航栏 JSX。
 export default function Navbar({ pathname }) {
   return (
     <header className="navbar-shell">
@@ -22,6 +33,9 @@ export default function Navbar({ pathname }) {
 
       <nav className="navbar-menu" aria-label="主导航">
         {navRoutes.map((route) => {
+          // 功能：判断当前一级菜单是否应该高亮。
+          // 参数：当前路径 pathname 和当前一级菜单路径 route.path。
+          // 返回：布尔值，决定一级菜单样式。
           const active = isRouteActive(pathname, route.path);
 
           if (!route.children?.length) {
