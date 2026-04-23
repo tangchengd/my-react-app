@@ -1,4 +1,65 @@
 .home-page {
+  width: 100%;
+  display: grid;
+  gap: 48px;
+}
+
+.home-hero {
+  position: relative;
+  min-height: calc(100vh - 180px);
   display: flex;
+  align-items: center;
   justify-content: center;
+}
+
+.home-scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.84rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  animation: home-hint-float 1.8s ease-in-out infinite;
+}
+
+.home-scroll-hint-arrow {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+@keyframes home-hint-float {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.72;
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(6px);
+    opacity: 1;
+  }
+}
+
+.home-quotes {
+  padding-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+  .home-page {
+    gap: 36px;
+  }
+
+  .home-hero {
+    min-height: calc(100vh - 220px);
+  }
+
+  .home-scroll-hint {
+    bottom: 12px;
+  }
 }
