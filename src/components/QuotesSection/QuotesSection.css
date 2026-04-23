@@ -213,6 +213,8 @@
 .quote-card-refresh-icon {
   width: 18px;
   height: 18px;
+  display: block;
+  object-fit: contain;
 }
 
 /* 刷新图标旋转动画。 */
