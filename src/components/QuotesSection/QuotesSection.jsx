@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import refreshIcon from "./refresh.svg";
 import "./QuotesSection.css";
 
 // 功能：语录接口地址，返回一条 hitokoto 文本。
@@ -21,32 +22,6 @@ function createInitialQuotes() {
     loading: true,
     error: "",
   }));
-}
-
-// 功能：渲染刷新按钮使用的内联 SVG 图标。
-// 参数：无。
-// 返回：刷新图标 JSX。
-function RefreshIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="quote-card-refresh-icon">
-      <path
-        d="M20 11a8 8 0 1 0 2.1 5.4"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.8"
-      />
-      <path
-        d="M20 4v7h-7"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.8"
-      />
-    </svg>
-  );
 }
 
 // 功能：渲染单张语录卡片。
@@ -76,7 +51,7 @@ function QuoteCard({ quote, onRefresh }) {
           aria-label="刷新语录"
           title="刷新语录"
         >
-          <RefreshIcon />
+          <img className="quote-card-refresh-icon" src={refreshIcon} alt="" />
         </button>
       </div>
     </article>
