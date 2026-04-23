@@ -21,8 +21,9 @@ function isRouteActive(pathname, routePath) {
 // 功能：渲染顶部固定导航栏，并根据 navRoutes 自动生成普通菜单和下拉菜单。
 // 参数：
 // - pathname: 当前页面路径，用于判断菜单激活状态。
+// - hidden: 控制导航栏是否处于隐藏状态。
 // 返回：顶部导航栏 JSX。
-export default function Navbar({ pathname }) {
+export default function Navbar({ pathname, hidden = false }) {
   // 功能：记录当前展开的下拉菜单路径。
   // 参数：初始值为 null，表示默认没有展开的菜单。
   // 返回：一个状态值和对应的更新函数。
@@ -95,7 +96,7 @@ export default function Navbar({ pathname }) {
   }
 
   return (
-    <header className="navbar-shell">
+    <header className={`navbar-shell${hidden ? " navbar-shell-hidden" : ""}`}>
       <div className="navbar-brand">
         <span className="navbar-brand-mark" />
         <NavLink className="navbar-brand-link" to="/">
