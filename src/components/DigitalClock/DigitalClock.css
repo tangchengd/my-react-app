@@ -66,6 +66,135 @@
   font-size: 1rem;
 }
 
+/* 签名 SVG：放在主标题说明下面，作为个性化装饰。 */
+#canvas {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  margin: 12px auto 0;
+  overflow: visible;
+  filter: brightness(0) invert(1) opacity(0.88);
+}
+
+/*
+  说明：下面这组样式是为内联 SVG path 设计的。
+  如果后续把签名改成直接内联到 JSX 中，这些类名动画就能直接生效。
+*/
+.signature-path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1 2;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  color: #555;
+}
+
+:root.dark .signature-path {
+  color: #ccc;
+}
+
+@keyframes sig-draw-2 {
+  0% {
+    stroke-dashoffset: 1.5;
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  35%,
+  88% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  97% {
+    stroke-dashoffset: -0.5;
+    opacity: 0.15;
+  }
+
+  100% {
+    stroke-dashoffset: -1.5;
+    opacity: 0;
+  }
+}
+
+@keyframes sig-draw-1 {
+  0%,
+  12% {
+    stroke-dashoffset: 1.5;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  40%,
+  88% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  97% {
+    stroke-dashoffset: -0.5;
+    opacity: 0.15;
+  }
+
+  100% {
+    stroke-dashoffset: -1.5;
+    opacity: 0;
+  }
+}
+
+@keyframes sig-draw-3 {
+  0%,
+  22% {
+    stroke-dashoffset: 1.5;
+    opacity: 0;
+  }
+
+  32% {
+    opacity: 1;
+  }
+
+  55%,
+  88% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  97% {
+    stroke-dashoffset: -0.5;
+    opacity: 0.15;
+  }
+
+  100% {
+    stroke-dashoffset: -1.5;
+    opacity: 0;
+  }
+}
+
+.path2 {
+  pathLength: 1;
+  animation: sig-draw-2 6s cubic-bezier(.35, 0, .15, 1) infinite;
+}
+
+.path1 {
+  pathLength: 1;
+  animation: sig-draw-1 6s cubic-bezier(.35, 0, .15, 1) infinite;
+}
+
+.path3 {
+  pathLength: 1;
+  animation: sig-draw-3 6s cubic-bezier(.35, 0, .15, 1) infinite;
+}
+
 /* 小屏适配：减小卡片内边距和标题区间距。 */
 @media (max-width: 640px) {
   .clock-container {

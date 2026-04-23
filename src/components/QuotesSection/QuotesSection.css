@@ -189,7 +189,7 @@
 /* 刷新按钮 hover 状态：背景变亮并略微旋转。 */
 .quote-card-refresh:hover:not(:disabled) {
   background: #e2e8f0;
-  transform: rotate(35deg);
+  transform: rotate(16deg) scale(1.04);
 }
 
 /* hover 时触发高光扫过动画。 */
@@ -215,6 +215,13 @@
   height: 18px;
   display: block;
   object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(12%) sepia(14%) saturate(1301%) hue-rotate(182deg) brightness(97%) contrast(94%);
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.quote-card-refresh:hover:not(:disabled) .quote-card-refresh-icon {
+  transform: rotate(10deg);
+  filter: brightness(0) saturate(100%) invert(30%) sepia(80%) saturate(1928%) hue-rotate(212deg) brightness(95%) contrast(93%);
 }
 
 /* 刷新图标旋转动画。 */
