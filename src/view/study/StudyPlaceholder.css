@@ -1,0 +1,30 @@
+.study-placeholder {
+  max-width: 780px;
+  padding: 48px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+  color: #fff;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.2);
+}
+
+.study-placeholder-eyebrow {
+  margin: 0 0 12px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.study-placeholder h1 {
+  margin: 0 0 14px;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+.study-placeholder p {
+  margin: 0;
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.02rem;
+}

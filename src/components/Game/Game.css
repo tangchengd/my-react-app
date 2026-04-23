@@ -1,0 +1,123 @@
+.game-page {
+  width: 100%;
+}
+
+.game-card {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) minmax(260px, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding: 24px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
+}
+
+.game-board {
+  padding: 24px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
+}
+
+.status {
+  margin-bottom: 20px;
+  color: #0f172a;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.board-grid {
+  display: grid;
+  gap: 0;
+  justify-content: center;
+}
+
+.board-row {
+  display: flex;
+}
+
+.square {
+  width: 74px;
+  height: 74px;
+  margin: -1px 0 0 -1px;
+  border: 1px solid #94a3b8;
+  background: #fff;
+  color: #0f172a;
+  font-size: 1.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.square:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.15);
+}
+
+.square:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 3px solid rgba(37, 99, 235, 0.35);
+  outline-offset: -3px;
+}
+
+.square.winning {
+  background: #fde68a;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.24);
+}
+
+.game-info {
+  padding: 24px;
+  border-radius: 20px;
+  background: #f8fafc;
+}
+
+.game-info button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.game-info button:hover {
+  background: #1d4ed8;
+}
+
+.game-info ol {
+  margin: 20px 0 0;
+  padding-left: 20px;
+}
+
+.game-info li + li {
+  margin-top: 10px;
+}
+
+.game-info span {
+  color: #475569;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .game-card {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .game-board,
+  .game-info {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .square {
+    width: 62px;
+    height: 62px;
+    font-size: 1.5rem;
+  }
+}

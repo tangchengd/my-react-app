@@ -1,0 +1,70 @@
+.clock-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.clock-container {
+  width: min(100%, 760px);
+  padding: 56px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 36px;
+  /* background: rgba(11, 18, 32, 0.42); */
+  backdrop-filter: blur(5px);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.28);
+  text-align: center;
+}
+
+.clock {
+  color: #fff;
+  font-size: clamp(2.9rem, 9vw, 6.8rem);
+  font-weight: 700;
+  font-family: monospace;
+  text-align: center;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.clock-year {
+  margin: 18px 0 6px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  letter-spacing: 0.08em;
+}
+
+.clock-date {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+}
+
+.clock-copy {
+  margin-top: 34px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.clock-copy h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  letter-spacing: -0.03em;
+}
+
+.clock-copy p {
+  margin: 12px auto 0;
+  max-width: 520px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1rem;
+}
+
+@media (max-width: 640px) {
+  .clock-container {
+    padding: 32px 16px;
+    border-radius: 24px;
+  }
+
+  .clock-copy {
+    margin-top: 26px;
+    padding-top: 20px;
+  }
+}
