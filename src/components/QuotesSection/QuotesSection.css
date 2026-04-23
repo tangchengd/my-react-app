@@ -1,0 +1,183 @@
+.quotes-section {
+  width: 100%;
+  display: grid;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.quotes-section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.quotes-section-heading {
+  display: grid;
+  gap: 8px;
+  color: #fff;
+}
+
+.quotes-section-eyebrow {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.88rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.quotes-section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.quotes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.quote-card-wrapper {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.48s ease, transform 0.48s ease;
+}
+
+.quotes-section-visible .quote-card-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.quote-card {
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.14);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.quote-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 56px rgba(15, 23, 42, 0.18);
+}
+
+.quote-card-loading {
+  cursor: progress;
+}
+
+.quote-card-body {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.quote-card-text,
+.quote-card-state {
+  margin: 0;
+  width: 100%;
+  color: #0f172a;
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.quote-card-text {
+  font-family: "Zen Maru Gothic", "Manrope", "Noto Sans SC", sans-serif;
+}
+
+.quote-card-state {
+  color: #475569;
+}
+
+.quote-card-state-error {
+  color: #b91c1c;
+}
+
+.quote-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 20px;
+}
+
+.quote-card-refresh {
+  position: relative;
+  overflow: hidden;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #0f172a;
+  cursor: pointer;
+  transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+}
+
+.quote-card-refresh::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.78) 50%, transparent 80%);
+  opacity: 0;
+  transform: translateX(-140%);
+  transition: opacity 0.18s ease;
+}
+
+.quote-card-refresh:hover:not(:disabled) {
+  background: #e2e8f0;
+  transform: rotate(35deg);
+}
+
+.quote-card-refresh:hover:not(:disabled)::before {
+  opacity: 1;
+  animation: quote-refresh-shimmer 0.7s ease;
+}
+
+.quote-card-refresh-loading .quote-card-refresh-icon {
+  animation: quote-spin 0.9s linear infinite;
+}
+
+.quote-card-refresh:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.quote-card-refresh-icon {
+  width: 18px;
+  height: 18px;
+}
+
+@keyframes quote-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes quote-refresh-shimmer {
+  from {
+    transform: translateX(-140%);
+  }
+
+  to {
+    transform: translateX(140%);
+  }
+}
+
+@media (max-width: 960px) {
+  .quotes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-card {
+    min-height: 220px;
+  }
+}
