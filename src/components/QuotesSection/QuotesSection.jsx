@@ -71,7 +71,9 @@ export default function QuotesSection() {
   const sectionRef = useRef(null);
 
   async function fetchQuote() {
-    const response = await fetch(QUOTE_API);
+    const response = await fetch(`${QUOTE_API}&t=${Date.now()}-${Math.random()}`, {
+      cache: "no-store",
+    });
 
     if (!response.ok) {
       throw new Error("Request failed");
@@ -125,11 +127,7 @@ export default function QuotesSection() {
   }
 
   useEffect(() => {
-    quotes.forEach((quote, index) => {
-      if (quote.loading && !quote.text && !quote.error) {
-        updateQuote(index);
-      }
-    });
+    Array.from({ length: CARD_COUNT }, (_, index) => updateQuote(index));
   }, []);
 
   useEffect(() => {
