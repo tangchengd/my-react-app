@@ -26,6 +26,15 @@
   text-transform: uppercase;
   transform: translateX(-50%);
   animation: home-hint-float 1.8s ease-in-out infinite;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  will-change: transform, opacity;
+}
+
+.home-scroll-hint-hidden {
+  animation: none;
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+  pointer-events: none;
 }
 
 .home-scroll-hint-arrow {
