@@ -1,9 +1,11 @@
+/* 首页整体布局：纵向排列首屏区域和下方语录区域。 */
 .home-page {
   width: 100%;
   display: grid;
   gap: 48px;
 }
 
+/* 首屏 Hero 区：保证首页第一眼看到的是居中的时钟主视觉。 */
 .home-hero {
   position: relative;
   min-height: calc(100vh - 180px);
@@ -12,6 +14,7 @@
   justify-content: center;
 }
 
+/* 底部滚动提示：提醒用户首页下方还有内容可以继续浏览。 */
 .home-scroll-hint {
   position: absolute;
   left: 50%;
@@ -30,6 +33,7 @@
   will-change: transform, opacity;
 }
 
+/* 滚动后隐藏提示：避免继续干扰页面阅读。 */
 .home-scroll-hint-hidden {
   animation: none;
   opacity: 0;
@@ -37,11 +41,13 @@
   pointer-events: none;
 }
 
+/* 底部箭头：用更大的字号强化“继续向下”的暗示。 */
 .home-scroll-hint-arrow {
   font-size: 1.8rem;
   line-height: 1;
 }
 
+/* 提示上下轻微浮动动画：让滚动提示更自然、更容易被注意到。 */
 @keyframes home-hint-float {
   0%,
   100% {
@@ -55,10 +61,12 @@
   }
 }
 
+/* 语录区外层：给页面底部内容预留一点呼吸空间。 */
 .home-quotes {
   padding-bottom: 32px;
 }
 
+/* 移动端适配：减小区域间距并调整首屏高度和提示位置。 */
 @media (max-width: 768px) {
   .home-page {
     gap: 36px;

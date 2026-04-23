@@ -1,3 +1,4 @@
+/* 语录区整体容器：默认先隐藏，进入视口后再淡入上移显示。 */
 .quotes-section {
   width: 100%;
   display: grid;
@@ -7,17 +8,20 @@
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
+/* 语录区可见状态：IntersectionObserver 触发后应用该类。 */
 .quotes-section-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* 标题区域：放英文眉标题和中文标题。 */
 .quotes-section-heading {
   display: grid;
   gap: 8px;
   color: #fff;
 }
 
+/* 英文眉标题：用较小字号给板块加辅助标识。 */
 .quotes-section-eyebrow {
   margin: 0;
   color: rgba(255, 255, 255, 0.72);
@@ -26,28 +30,33 @@
   text-transform: uppercase;
 }
 
+/* 中文主标题：语录区域的主要标题文本。 */
 .quotes-section-heading h2 {
   margin: 0;
   font-size: clamp(1.8rem, 3vw, 2.6rem);
 }
 
+/* 卡片网格：桌面端三列排列语录卡片。 */
 .quotes-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
 
+/* 卡片外层包裹器：专门用于做交错出现动画。 */
 .quote-card-wrapper {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.48s ease, transform 0.48s ease;
 }
 
+/* 语录区出现后，卡片 wrapper 依次进入可见状态。 */
 .quotes-section-visible .quote-card-wrapper {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* 语录卡片主体：白色玻璃感卡片、圆角、阴影和轻微悬浮动效。 */
 .quote-card {
   position: relative;
   min-height: 280px;
@@ -67,6 +76,7 @@
   overflow: hidden;
 }
 
+/* 卡片内部高光层：增强玻璃反光质感。 */
 .quote-card::before {
   content: "";
   position: absolute;
@@ -78,6 +88,7 @@
   pointer-events: none;
 }
 
+/* 卡片顶部细高光边：让卡片边缘更精致、更立体。 */
 .quote-card::after {
   content: "";
   position: absolute;
@@ -90,6 +101,7 @@
   pointer-events: none;
 }
 
+/* 卡片 hover 状态：轻微上浮并增强阴影。 */
 .quote-card:hover {
   transform: translateY(-8px);
   box-shadow:
@@ -98,10 +110,12 @@
     0 28px 56px rgba(15, 23, 42, 0.18);
 }
 
+/* 卡片处于加载状态时：将鼠标样式切换为等待中。 */
 .quote-card-loading {
   cursor: progress;
 }
 
+/* 卡片正文区域：让文本在卡片中垂直居中。 */
 .quote-card-body {
   position: relative;
   z-index: 1;
@@ -110,6 +124,7 @@
   align-items: center;
 }
 
+/* 语录正文和状态文案的共用文字样式。 */
 .quote-card-text,
 .quote-card-state {
   margin: 0;
@@ -119,18 +134,22 @@
   line-height: 1.8;
 }
 
+/* 语录正文：单独指定更柔和的字体栈。 */
 .quote-card-text {
   font-family: "Zen Maru Gothic", "Manrope", "Noto Sans SC", sans-serif;
 }
 
+/* 默认状态文案：例如“加载中...”。 */
 .quote-card-state {
   color: #475569;
 }
 
+/* 错误状态文案：请求失败时使用更醒目的红色。 */
 .quote-card-state-error {
   color: #b91c1c;
 }
 
+/* 卡片底部区域：把刷新按钮放到右下角。 */
 .quote-card-footer {
   position: relative;
   z-index: 1;
@@ -139,6 +158,7 @@
   padding-top: 20px;
 }
 
+/* 刷新按钮：圆形按钮，支持 hover 光泽和 loading 旋转。 */
 .quote-card-refresh {
   position: relative;
   overflow: hidden;
@@ -155,6 +175,7 @@
   transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease;
 }
 
+/* 刷新按钮高光层：hover 时做一道扫过的细光泽。 */
 .quote-card-refresh::before {
   content: "";
   position: absolute;
@@ -165,30 +186,36 @@
   transition: opacity 0.18s ease;
 }
 
+/* 刷新按钮 hover 状态：背景变亮并略微旋转。 */
 .quote-card-refresh:hover:not(:disabled) {
   background: #e2e8f0;
   transform: rotate(35deg);
 }
 
+/* hover 时触发高光扫过动画。 */
 .quote-card-refresh:hover:not(:disabled)::before {
   opacity: 1;
   animation: quote-refresh-shimmer 0.7s ease;
 }
 
+/* 加载状态：让刷新图标持续旋转。 */
 .quote-card-refresh-loading .quote-card-refresh-icon {
   animation: quote-spin 0.9s linear infinite;
 }
 
+/* 按钮禁用状态：降低透明度并显示等待鼠标样式。 */
 .quote-card-refresh:disabled {
   opacity: 0.5;
   cursor: wait;
 }
 
+/* 刷新图标尺寸控制。 */
 .quote-card-refresh-icon {
   width: 18px;
   height: 18px;
 }
 
+/* 刷新图标旋转动画。 */
 @keyframes quote-spin {
   from {
     transform: rotate(0deg);
@@ -199,6 +226,7 @@
   }
 }
 
+/* 刷新按钮高光扫过动画。 */
 @keyframes quote-refresh-shimmer {
   from {
     transform: translateX(-140%);
@@ -209,6 +237,7 @@
   }
 }
 
+/* 平板和手机适配：将三列布局改成单列，并适当降低卡片高度。 */
 @media (max-width: 960px) {
   .quotes-grid {
     grid-template-columns: 1fr;

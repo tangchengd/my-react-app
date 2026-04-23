@@ -97,6 +97,7 @@ export default function Navbar({ pathname, hidden = false }) {
 
   return (
     <header className={`navbar-shell${hidden ? " navbar-shell-hidden" : ""}`}>
+      {/* 左侧品牌区：显示项目名称和装饰标记。 */}
       <div className="navbar-brand">
         <span className="navbar-brand-mark" />
         <NavLink className="navbar-brand-link" to="/">
@@ -104,6 +105,7 @@ export default function Navbar({ pathname, hidden = false }) {
         </NavLink>
       </div>
 
+      {/* 中间菜单区：根据 navRoutes 动态生成普通菜单和下拉菜单。 */}
       <nav className="navbar-menu" aria-label="主导航">
         {navRoutes.map((route) => {
           // 功能：判断当前一级菜单是否应该高亮。
@@ -113,6 +115,7 @@ export default function Navbar({ pathname, hidden = false }) {
 
           if (!route.children?.length) {
             return (
+              // 没有 children 的一级菜单，直接渲染成普通 NavLink。
               <NavLink
                 key={route.path}
                 to={route.path}
@@ -135,6 +138,7 @@ export default function Navbar({ pathname, hidden = false }) {
               onMouseEnter={() => handleOpenMenu(route.path)}
               onMouseLeave={handleScheduleCloseMenu}
             >
+              {/* 有 children 的一级菜单，渲染成受控下拉触发按钮。 */}
               <button
                 type="button"
                 className={`navbar-link navbar-dropdown-trigger${active ? " navbar-link-active" : ""}`}
@@ -143,6 +147,8 @@ export default function Navbar({ pathname, hidden = false }) {
               >
                 {route.label}
               </button>
+
+              {/* 下拉菜单面板：渲染当前一级菜单下的所有子路由。 */}
               <div className="navbar-dropdown-menu">
                 {route.children.map((child) => (
                   <NavLink
@@ -163,6 +169,7 @@ export default function Navbar({ pathname, hidden = false }) {
         })}
       </nav>
 
+      {/* 右侧辅助信息区：当前主要承担视觉平衡和轻量信息展示。 */}
       <div className="navbar-meta" aria-label="辅助信息">
         <span>React</span>
         <span>Study</span>

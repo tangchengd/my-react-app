@@ -1,7 +1,9 @@
+/* 游戏页面最外层：控制页面占满可用宽度。 */
 .game-page {
   width: 100%;
 }
 
+/* 游戏主体卡片：左边棋盘，右边历史记录。 */
 .game-card {
   display: grid;
   grid-template-columns: minmax(260px, 320px) minmax(260px, 1fr);
@@ -13,12 +15,14 @@
   box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
 }
 
+/* 棋盘区域外层：给棋盘一个独立背景和圆角。 */
 .game-board {
   padding: 24px;
   border-radius: 20px;
   background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
 }
 
+/* 状态文本：显示当前轮到谁或谁获胜。 */
 .status {
   margin-bottom: 20px;
   color: #0f172a;
@@ -27,16 +31,19 @@
   text-align: center;
 }
 
+/* 棋盘网格容器：让每一行整体居中。 */
 .board-grid {
   display: grid;
   gap: 0;
   justify-content: center;
 }
 
+/* 单行棋盘格子。 */
 .board-row {
   display: flex;
 }
 
+/* 单个棋盘格子按钮。 */
 .square {
   width: 74px;
   height: 74px;
@@ -50,11 +57,13 @@
   transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
 }
 
+/* 格子 hover 状态：略微上浮并增加阴影。 */
 .square:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 20px rgba(59, 130, 246, 0.15);
 }
 
+/* 键盘聚焦态：增强无障碍可见性。 */
 .square:focus-visible {
   position: relative;
   z-index: 1;
@@ -62,18 +71,21 @@
   outline-offset: -3px;
 }
 
+/* 获胜格子高亮样式。 */
 .square.winning {
   background: #fde68a;
   border-color: #f59e0b;
   box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.24);
 }
 
+/* 右侧信息面板。 */
 .game-info {
   padding: 24px;
   border-radius: 20px;
   background: #f8fafc;
 }
 
+/* 信息面板中的按钮基础样式。 */
 .game-info button {
   padding: 10px 16px;
   border: none;
@@ -84,24 +96,29 @@
   cursor: pointer;
 }
 
+/* 信息面板按钮 hover 状态。 */
 .game-info button:hover {
   background: #1d4ed8;
 }
 
+/* 历史记录列表。 */
 .game-info ol {
   margin: 20px 0 0;
   padding-left: 20px;
 }
 
+/* 相邻列表项之间的间距。 */
 .game-info li + li {
   margin-top: 10px;
 }
 
+/* 当前所在步数文本。 */
 .game-info span {
   color: #475569;
   font-weight: 700;
 }
 
+/* 平板适配：改为上下布局，并收紧内边距。 */
 @media (max-width: 900px) {
   .game-card {
     grid-template-columns: 1fr;
@@ -114,6 +131,7 @@
   }
 }
 
+/* 手机适配：缩小单个格子尺寸。 */
 @media (max-width: 480px) {
   .square {
     width: 62px;

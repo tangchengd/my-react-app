@@ -1,9 +1,11 @@
+/* 时钟页面外层：负责把时钟卡片水平居中。 */
 .clock-page {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
+/* 时钟主卡片：承载时间、日期和标题文案。 */
 .clock-container {
   width: min(100%, 760px);
   padding: 56px 28px;
@@ -15,6 +17,7 @@
   text-align: center;
 }
 
+/* 大号数字时间显示。 */
 .clock {
   color: #fff;
   font-size: clamp(2.9rem, 9vw, 6.8rem);
@@ -24,6 +27,7 @@
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 
+/* 农历干支年份。 */
 .clock-year {
   margin: 18px 0 6px;
   color: rgba(255, 255, 255, 0.9);
@@ -31,18 +35,21 @@
   letter-spacing: 0.08em;
 }
 
+/* 公历日期和星期。 */
 .clock-date {
   margin: 0;
   color: rgba(255, 255, 255, 0.68);
   font-size: clamp(1rem, 1.8vw, 1.15rem);
 }
 
+/* 标题说明区：用一条轻边框把文案与时钟主体分开。 */
 .clock-copy {
   margin-top: 34px;
   padding-top: 26px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+/* 主标题。 */
 .clock-copy h2 {
   margin: 0;
   color: #fff;
@@ -50,6 +57,7 @@
   letter-spacing: -0.03em;
 }
 
+/* 副标题描述文案。 */
 .clock-copy p {
   margin: 12px auto 0;
   max-width: 520px;
@@ -57,6 +65,7 @@
   font-size: 1rem;
 }
 
+/* 小屏适配：减小卡片内边距和标题区间距。 */
 @media (max-width: 640px) {
   .clock-container {
     padding: 32px 16px;

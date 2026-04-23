@@ -1,3 +1,4 @@
+/* 导航栏外层：固定在页面顶部中央，并使用半透明毛玻璃样式。 */
 .navbar-shell {
   position: fixed;
   top: 20px;
@@ -18,12 +19,14 @@
   transition: transform 0.28s ease, opacity 0.28s ease, box-shadow 0.28s ease;
 }
 
+/* 导航栏隐藏状态：下滑时向上收起并禁止交互。 */
 .navbar-shell-hidden {
   opacity: 0;
   transform: translateX(-50%) translateY(-24px);
   pointer-events: none;
 }
 
+/* 左侧品牌区域。 */
 .navbar-brand {
   display: inline-flex;
   align-items: center;
@@ -31,6 +34,7 @@
   min-width: 0;
 }
 
+/* 品牌前的小圆点装饰。 */
 .navbar-brand-mark {
   width: 10px;
   height: 10px;
@@ -39,6 +43,7 @@
   box-shadow: 0 0 18px rgba(96, 165, 250, 0.65);
 }
 
+/* 品牌名称链接。 */
 .navbar-brand-link {
   color: #fff;
   text-decoration: none;
@@ -47,6 +52,7 @@
   letter-spacing: 0.01em;
 }
 
+/* 中间菜单区域。 */
 .navbar-menu {
   display: inline-flex;
   align-items: center;
@@ -54,6 +60,7 @@
   gap: 10px;
 }
 
+/* 顶部导航项和下拉触发按钮的基础样式。 */
 .navbar-link,
 .navbar-dropdown-trigger {
   border: none;
@@ -68,26 +75,31 @@
   transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
 }
 
+/* hover 状态：让菜单项更亮。 */
 .navbar-link:hover,
 .navbar-dropdown:hover .navbar-dropdown-trigger {
   color: #fff;
   background: rgba(255, 255, 255, 0.12);
 }
 
+/* 当前下拉菜单已展开时的一级按钮样式。 */
 .navbar-dropdown-open .navbar-dropdown-trigger {
   color: #fff;
   background: rgba(255, 255, 255, 0.12);
 }
 
+/* 当前激活路由对应的菜单项高亮。 */
 .navbar-link-active {
   color: #fff;
   background: rgba(255, 255, 255, 0.16);
 }
 
+/* 单个下拉菜单外层。 */
 .navbar-dropdown {
   position: relative;
 }
 
+/* 下拉菜单面板：默认隐藏，hover 或打开状态时显示。 */
 .navbar-dropdown-menu {
   position: absolute;
   top: calc(100% + 12px);
@@ -107,18 +119,21 @@
   transition: opacity 0.18s ease, transform 0.18s ease;
 }
 
+/* hover 时显示下拉面板。 */
 .navbar-dropdown:hover .navbar-dropdown-menu {
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
 }
 
+/* 受控展开状态下显示下拉面板。 */
 .navbar-dropdown-open .navbar-dropdown-menu {
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
 }
 
+/* 下拉菜单子项。 */
 .navbar-dropdown-item {
   display: grid;
   gap: 2px;
@@ -129,22 +144,26 @@
   transition: background-color 0.18s ease, color 0.18s ease;
 }
 
+/* 子项描述文字。 */
 .navbar-dropdown-item small {
   color: rgba(255, 255, 255, 0.56);
   font-size: 0.78rem;
 }
 
+/* 子项 hover 和激活状态。 */
 .navbar-dropdown-item:hover,
 .navbar-dropdown-item-active {
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
 }
 
+/* 子项激活或 hover 时，同时提亮描述文字。 */
 .navbar-dropdown-item-active small,
 .navbar-dropdown-item:hover small {
   color: rgba(255, 255, 255, 0.72);
 }
 
+/* 右侧辅助信息区域。 */
 .navbar-meta {
   display: inline-flex;
   justify-content: flex-end;
@@ -154,6 +173,7 @@
   white-space: nowrap;
 }
 
+/* 平板适配：导航改成单列堆叠，隐藏右侧辅助文字。 */
 @media (max-width: 900px) {
   .navbar-shell {
     grid-template-columns: 1fr;
@@ -176,6 +196,7 @@
   }
 }
 
+/* 手机适配：收紧宽度，并让下拉面板撑满当前容器宽度。 */
 @media (max-width: 560px) {
   .navbar-shell {
     top: 10px;
