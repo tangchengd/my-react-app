@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { navRoutes } from "../../../router/routes";
 import "./Navbar.css";
@@ -22,6 +23,77 @@ function isRouteActive(pathname, routePath) {
 // - pathname: 当前页面路径，用于判断菜单激活状态。
 // 返回：顶部导航栏 JSX。
 export default function Navbar({ pathname }) {
+  // 功能：记录当前展开的下拉菜单路径。
+  // 参数：初始值为 null，表示默认没有展开的菜单。
+  // 返回：一个状态值和对应的更新函数。
+  const [openMenu, setOpenMenu] = useState(null);
+
+  // 功能：保存延迟关闭下拉菜单的定时器，避免鼠标从一级菜单移动到子菜单时立即关闭。
+  // 参数：初始值为 null。
+  // 返回：一个可变引用对象，current 中存放定时器 ID。
+  const closeTimerRef = useRef(null);
+
+  // 功能：当路由切换后自动收起所有下拉菜单。
+  // 参数：依赖 pathname，当路径变化时触发。
+  // 返回：无返回值，副作用是把 openMenu 重置为 null。
+  useEffect(() => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+
+    setOpenMenu(null);
+  }, [pathname]);
+
+  // 功能：组件卸载时清理关闭菜单的定时器，避免遗留异步副作用。
+  // 参数：无。
+  // 返回：清理函数。
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+      }
+    };
+  }, []);
+
+  // 功能：展开当前一级菜单对应的下拉层。
+  // 参数：menuPath，表示要展开的一级菜单路径。
+  // 返回：无返回值，副作用是更新 openMenu。
+  function handleOpenMenu(menuPath) {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+
+    setOpenMenu(menuPath);
+  }
+
+  // 功能：延迟关闭当前打开的下拉层，给鼠标进入子菜单留出时间。
+  // 参数：无。
+  // 返回：无返回值，副作用是启动定时关闭逻辑。
+  function handleScheduleCloseMenu() {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+    }
+
+    closeTimerRef.current = setTimeout(() => {
+      setOpenMenu(null);
+      closeTimerRef.current = null;
+    }, 128);
+  }
+
+  // 功能：点击子菜单后主动收起下拉菜单。
+  // 参数：无。
+  // 返回：无返回值，副作用是关闭下拉层。
+  function handleChildLinkClick() {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+
+    setOpenMenu(null);
+  }
+
   return (
     <header className="navbar-shell">
       <div className="navbar-brand">
@@ -53,11 +125,20 @@ export default function Navbar({ pathname }) {
             );
           }
 
+          const isOpen = openMenu === route.path;
+
           return (
-            <div key={route.path} className="navbar-dropdown">
+            <div
+              key={route.path}
+              className={`navbar-dropdown${isOpen ? " navbar-dropdown-open" : ""}`}
+              onMouseEnter={() => handleOpenMenu(route.path)}
+              onMouseLeave={handleScheduleCloseMenu}
+            >
               <button
                 type="button"
                 className={`navbar-link navbar-dropdown-trigger${active ? " navbar-link-active" : ""}`}
+                aria-expanded={isOpen}
+                onClick={() => handleOpenMenu(route.path)}
               >
                 {route.label}
               </button>
@@ -66,6 +147,7 @@ export default function Navbar({ pathname }) {
                   <NavLink
                     key={child.path}
                     to={child.path}
+                    onClick={handleChildLinkClick}
                     className={({ isActive }) =>
                       `navbar-dropdown-item${isActive ? " navbar-dropdown-item-active" : ""}`
                     }
