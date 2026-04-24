@@ -5,6 +5,7 @@
   font-weight: 400;
   --theme-text: #0f172a;
   --theme-text-muted: rgba(15, 23, 42, 0.62);
+  --theme-text-soft: #475569;
   --theme-overlay-top: rgba(15, 23, 42, 0.3);
   --theme-overlay-bottom: rgba(15, 23, 42, 0.22);
   --theme-accent: #2563eb;
@@ -74,6 +75,7 @@
   color: #e2e8f0;
   --theme-text: #e2e8f0;
   --theme-text-muted: rgba(226, 232, 240, 0.72);
+  --theme-text-soft: rgba(226, 232, 240, 0.78);
   --theme-overlay-top: rgba(2, 6, 23, 0.62);
   --theme-overlay-bottom: rgba(15, 23, 42, 0.48);
   --theme-accent: #93c5fd;

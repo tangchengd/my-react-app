@@ -3,7 +3,19 @@
   width: min(1180px, calc(100vw - 32px));
   margin: 0 auto;
   padding: 132px 0 72px;
-  color: var(--theme-text);
+  color: #f8fafc;
+}
+
+.weather-hero-copy h1,
+.weather-summary-card h2,
+.weather-section-heading h3,
+.weather-daily-top h4,
+.weather-metric strong,
+.weather-hourly-card strong,
+.weather-hourly-card span,
+.weather-search-label,
+.weather-hot-cities-label {
+  color: #f8fafc;
 }
 
 /* 顶部两栏布局：左侧说明，右侧搜索。桌面端并排，移动端在 media query 中改为纵向。 */
@@ -40,7 +52,7 @@
   padding: 6px 12px;
   border-radius: 999px;
   background: var(--theme-surface-subtle);
-  color: var(--theme-accent);
+  color: #dbeafe;
   font-size: 0.82rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -55,7 +67,7 @@
 .weather-hero-copy p {
   margin: 0;
   max-width: 40rem;
-  color: var(--theme-text-muted);
+  color: rgba(241, 245, 249, 0.86);
   font-size: 1rem;
   line-height: 1.7;
 }
@@ -69,9 +81,10 @@
 }
 
 .weather-search-label {
-  color: var(--theme-text-muted);
+  color: #ffffff;
   font-size: 0.94rem;
   font-weight: 600;
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.28);
 }
 
 /* 输入框和按钮横向排列，移动端会改成纵向。 */
@@ -87,9 +100,13 @@
   border: 1px solid var(--theme-border-soft);
   border-radius: 18px;
   background: var(--theme-surface-strong);
-  color: var(--theme-text);
+  color: #f8fafc;
   font-size: 1rem;
   outline: none;
+}
+
+.weather-search-input::placeholder {
+  color: rgba(226, 232, 240, 0.72);
 }
 
 .weather-search-input:focus {
@@ -115,9 +132,10 @@
 
 .weather-search-tip {
   margin: 0;
-  color: var(--theme-text-muted);
+  color: rgba(248, 250, 252, 0.88);
   font-size: 0.85rem;
   line-height: 1.6;
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.22);
 }
 
 /* 联想词和热门城市都采用胶囊按钮形式，视觉和交互保持统一。 */
@@ -134,10 +152,11 @@
   border: 1px solid var(--theme-border-soft);
   border-radius: 999px;
   background: var(--theme-surface-strong);
-  color: var(--theme-text);
+  color: #ffffff;
   font-size: 0.9rem;
   cursor: pointer;
   transition: border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+  text-shadow: 0 1px 8px rgba(15, 23, 42, 0.24);
 }
 
 .weather-suggestion-chip:hover,
@@ -145,7 +164,7 @@
 .weather-hot-city-button:hover {
   border-color: var(--theme-accent-border);
   background: var(--theme-accent-soft);
-  color: var(--theme-accent);
+  color: #eff6ff;
 }
 
 .weather-hot-cities {
@@ -154,9 +173,10 @@
 }
 
 .weather-hot-cities-label {
-  color: var(--theme-text-muted);
+  color: #ffffff;
   font-size: 0.88rem;
   font-weight: 600;
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.28);
 }
 
 /* 加载和错误反馈区域：放在搜索区下方，避免打断主要布局。 */
@@ -164,7 +184,7 @@
   margin-top: 24px;
   padding: 18px 20px;
   border-radius: 22px;
-  color: var(--theme-text);
+  color: #f8fafc;
 }
 
 .weather-feedback-error {
@@ -197,7 +217,7 @@
 .weather-summary-label,
 .weather-card-date {
   margin: 0;
-  color: var(--theme-accent);
+  color: #bfdbfe;
   font-size: 0.86rem;
   font-weight: 600;
 }
@@ -209,7 +229,7 @@
 
 .weather-summary-location {
   margin: 0;
-  color: var(--theme-text-muted);
+  color: rgba(226, 232, 240, 0.82);
 }
 
 /* 右侧三项摘要指标：日出、日落、预报天数。 */
@@ -227,6 +247,7 @@
   padding: 16px 18px;
   border-radius: 22px;
   background: var(--theme-surface-soft);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .weather-metric-icon {
@@ -237,14 +258,17 @@
 
 .weather-metric span {
   display: block;
-  color: var(--theme-accent);
+  color: #dbeafe;
   font-size: 0.8rem;
+  text-shadow: 0 2px 8px rgba(15, 23, 42, 0.22);
 }
 
 .weather-metric strong {
   display: block;
   margin-top: 8px;
   font-size: 1.2rem;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.28);
 }
 
 /* 内容分组的通用外层。 */
@@ -260,7 +284,7 @@
 
 .weather-section-heading p {
   margin: 8px 0 0;
-  color: var(--theme-text-muted);
+  color: rgba(226, 232, 240, 0.78);
 }
 
 /* 逐日预报网格：根据可用宽度自动换列。 */
@@ -305,7 +329,7 @@
 
 .weather-card-temp {
   margin: 0;
-  color: var(--theme-text);
+  color: #f8fafc;
   font-size: 1.28rem;
   font-weight: 700;
 }
@@ -326,7 +350,7 @@
 
 .weather-card-details dt,
 .weather-hourly-card small {
-  color: var(--theme-text-muted);
+  color: rgba(226, 232, 240, 0.76);
 }
 
 .weather-card-details dd {
@@ -362,7 +386,7 @@
 }
 
 .weather-hourly-card span {
-  color: var(--theme-text);
+  color: #f8fafc;
   font-weight: 600;
 }
 
@@ -375,7 +399,7 @@
   border: 1px solid var(--theme-border);
   border-radius: 999px;
   background: var(--theme-surface-subtle);
-  color: var(--theme-text-muted);
+  color: rgba(241, 245, 249, 0.82);
   font-size: 0.85rem;
 }
 
