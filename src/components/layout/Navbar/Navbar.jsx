@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
+import ThemeToggle from "../../theme/ThemeToggle";
 import { navRoutes } from "../../../router/routes";
 import "./Navbar.css";
 
@@ -173,7 +174,7 @@ export default function Navbar({ pathname, hidden = false }) {
       <div className="navbar-meta" aria-label="辅助信息">
         <span>React</span>
         <span>Study</span>
-        <span>Playground</span>
+        <ThemeToggle />
       </div>
     </header>
   );

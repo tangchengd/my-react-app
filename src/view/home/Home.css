@@ -23,7 +23,7 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--theme-home-hint);
   font-size: 0.84rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;

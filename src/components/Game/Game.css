@@ -11,21 +11,21 @@
   align-items: start;
   padding: 24px;
   border-radius: 28px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
+  background: var(--theme-surface-strong);
+  box-shadow: 0 24px 60px var(--theme-shadow);
 }
 
 /* 棋盘区域外层：给棋盘一个独立背景和圆角。 */
 .game-board {
   padding: 24px;
   border-radius: 20px;
-  background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
+  background: var(--theme-board-surface);
 }
 
 /* 状态文本：显示当前轮到谁或谁获胜。 */
 .status {
   margin-bottom: 20px;
-  color: #0f172a;
+  color: var(--theme-text);
   font-size: 1.1rem;
   font-weight: 700;
   text-align: center;
@@ -48,9 +48,9 @@
   width: 74px;
   height: 74px;
   margin: -1px 0 0 -1px;
-  border: 1px solid #94a3b8;
-  background: #fff;
-  color: #0f172a;
+  border: 1px solid var(--theme-board-cell-border);
+  background: var(--theme-board-cell);
+  color: var(--theme-text);
   font-size: 1.8rem;
   font-weight: 700;
   cursor: pointer;
@@ -60,29 +60,29 @@
 /* 格子 hover 状态：略微上浮并增加阴影。 */
 .square:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.15);
+  box-shadow: 0 10px 20px color-mix(in srgb, var(--theme-accent) 22%, transparent);
 }
 
 /* 键盘聚焦态：增强无障碍可见性。 */
 .square:focus-visible {
   position: relative;
   z-index: 1;
-  outline: 3px solid rgba(37, 99, 235, 0.35);
+  outline: 3px solid color-mix(in srgb, var(--theme-accent) 35%, transparent);
   outline-offset: -3px;
 }
 
 /* 获胜格子高亮样式。 */
 .square.winning {
-  background: #fde68a;
-  border-color: #f59e0b;
-  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.24);
+  background: var(--theme-board-win);
+  border-color: var(--theme-board-win-border);
+  box-shadow: 0 0 0 2px var(--theme-board-win-shadow);
 }
 
 /* 右侧信息面板。 */
 .game-info {
   padding: 24px;
   border-radius: 20px;
-  background: #f8fafc;
+  background: var(--theme-surface-soft);
 }
 
 /* 信息面板中的按钮基础样式。 */
@@ -90,7 +90,7 @@
   padding: 10px 16px;
   border: none;
   border-radius: 999px;
-  background: #2563eb;
+  background: var(--theme-accent);
   color: #fff;
   font-size: 0.95rem;
   cursor: pointer;
@@ -98,7 +98,7 @@
 
 /* 信息面板按钮 hover 状态。 */
 .game-info button:hover {
-  background: #1d4ed8;
+  background: color-mix(in srgb, var(--theme-accent) 86%, #000 14%);
 }
 
 /* 历史记录列表。 */
@@ -114,7 +114,7 @@
 
 /* 当前所在步数文本。 */
 .game-info span {
-  color: #475569;
+  color: var(--theme-text-muted);
   font-weight: 700;
 }
 

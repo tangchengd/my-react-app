@@ -9,17 +9,17 @@
 .clock-container {
   width: min(100%, 760px);
   padding: 56px 28px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--theme-clock-border);
   border-radius: 36px;
   /* background: rgba(11, 18, 32, 0.42); */
   backdrop-filter: blur(5px);
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.28);
+  box-shadow: 0 24px 60px var(--theme-clock-shadow);
   text-align: center;
 }
 
 /* 大号数字时间显示。 */
 .clock {
-  color: #fff;
+  color: var(--theme-clock-text);
   font-size: clamp(2.9rem, 9vw, 6.8rem);
   font-weight: 700;
   font-family: monospace;
@@ -31,7 +31,7 @@
 /* 农历干支年份。 */
 .clock-year {
   margin: 18px 0 6px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--theme-clock-text-soft);
   font-size: clamp(1.15rem, 2vw, 1.4rem);
   letter-spacing: 0.08em;
 }
@@ -39,7 +39,7 @@
 /* 公历日期和星期。 */
 .clock-date {
   margin: 0;
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--theme-clock-text-muted);
   font-size: clamp(1rem, 1.8vw, 1.15rem);
 }
 
@@ -47,13 +47,13 @@
 .clock-copy {
   margin-top: 34px;
   padding-top: 26px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid var(--theme-clock-divider);
 }
 
 /* 主标题。 */
 .clock-copy h2 {
   margin: 0;
-  color: #fff;
+  color: var(--theme-clock-text);
   font-size: clamp(2rem, 4vw, 3.1rem);
   letter-spacing: -0.03em;
 }
@@ -62,7 +62,7 @@
 .clock-copy p {
   margin: 12px auto 0;
   max-width: 520px;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--theme-clock-text-muted);
   font-size: 1rem;
 }
 
@@ -74,7 +74,7 @@
   display: block;
   margin: 12px auto 0;
   overflow: visible;
-  filter: brightness(0) invert(1) opacity(0.88);
+  filter: var(--theme-clock-signature-filter);
 }
 
 /*
@@ -90,11 +90,7 @@
   stroke-dasharray: 1 2;
   stroke-dashoffset: 1;
   opacity: 0;
-  color: #555;
-}
-
-:root.dark .signature-path {
-  color: #ccc;
+  color: var(--theme-clock-signature-stroke);
 }
 
 @keyframes sig-draw-2 {

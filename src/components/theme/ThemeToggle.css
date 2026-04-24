@@ -1,0 +1,226 @@
+/* 主题切换器外层：作为右上角小型下拉菜单的定位容器。 */
+.theme-toggle {
+  position: relative;
+}
+
+/* 主题按钮：保持和当前导航栏一致的毛玻璃与圆角语言。 */
+.theme-toggle-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.88);
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.theme-toggle-button:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.theme-toggle-button-icon-wrap {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.theme-toggle-button-icon {
+  width: 14px;
+  height: 14px;
+  display: block;
+  object-fit: contain;
+  filter: brightness(0) invert(1) opacity(0.92);
+}
+
+.theme-toggle-button-icon-original {
+  filter: none;
+}
+
+/* 左侧模式提示，使用更弱的视觉权重。 */
+.theme-toggle-button-mode {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.theme-toggle-button-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+/* 下拉菜单面板。 */
+.theme-toggle-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 32;
+  width: 208px;
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  background: rgba(10, 18, 33, 0.82);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.28);
+}
+
+.theme-toggle-menu-title {
+  padding: 4px 8px 2px;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* 主题选项按钮。 */
+.theme-toggle-option {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 16px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.86);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.theme-toggle-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle-option-active {
+  background: rgba(96, 165, 250, 0.16);
+  color: #fff;
+}
+
+.theme-toggle-option-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.theme-toggle-option-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-toggle-option-icon-wrap {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.theme-toggle-option-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  object-fit: contain;
+  filter: brightness(0) invert(1) opacity(0.92);
+}
+
+.theme-toggle-option-icon-original {
+  filter: none;
+}
+
+.theme-toggle-option-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.theme-toggle-option-hint {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 0.76rem;
+}
+
+.theme-toggle-option-active .theme-toggle-option-hint {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* 亮色主题下切换器本身也改成浅色毛玻璃。 */
+:root[data-theme="light"] .theme-toggle-button {
+  border-color: rgba(255, 255, 255, 0.52);
+  background: rgba(255, 255, 255, 0.46);
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .theme-toggle-button-icon-wrap {
+  background: rgba(148, 163, 184, 0.14);
+}
+
+:root[data-theme="light"] .theme-toggle-button-icon {
+  filter: brightness(0) saturate(100%) invert(12%) sepia(14%) saturate(1301%) hue-rotate(182deg) brightness(97%) contrast(94%);
+}
+
+:root[data-theme="light"] .theme-toggle-button-icon-original {
+  filter: none;
+}
+
+:root[data-theme="light"] .theme-toggle-button:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+:root[data-theme="light"] .theme-toggle-button-mode {
+  color: rgba(15, 23, 42, 0.46);
+}
+
+:root[data-theme="light"] .theme-toggle-menu {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+}
+
+:root[data-theme="light"] .theme-toggle-menu-title {
+  color: rgba(15, 23, 42, 0.46);
+}
+
+:root[data-theme="light"] .theme-toggle-option {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .theme-toggle-option-icon-wrap {
+  background: rgba(148, 163, 184, 0.14);
+}
+
+:root[data-theme="light"] .theme-toggle-option-icon {
+  filter: brightness(0) saturate(100%) invert(12%) sepia(14%) saturate(1301%) hue-rotate(182deg) brightness(97%) contrast(94%);
+}
+
+:root[data-theme="light"] .theme-toggle-option-icon-original {
+  filter: none;
+}
+
+:root[data-theme="light"] .theme-toggle-option:hover {
+  background: rgba(148, 163, 184, 0.14);
+}
+
+:root[data-theme="light"] .theme-toggle-option-active {
+  background: rgba(219, 234, 254, 0.82);
+  color: #1d4ed8;
+}
+
+:root[data-theme="light"] .theme-toggle-option-hint {
+  color: rgba(15, 23, 42, 0.52);
+}
+
+:root[data-theme="light"] .theme-toggle-option-active .theme-toggle-option-hint {
+  color: rgba(29, 78, 216, 0.78);
+}

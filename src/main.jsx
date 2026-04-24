@@ -1,5 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { ThemeProvider } from "./components/theme/ThemeProvider";
 import AppRouter from "./router";
 import "./index.css";
 
@@ -13,6 +14,8 @@ const root = createRoot(document.getElementById("root"));
 // 返回：无返回值，执行后页面开始显示应用内容。
 root.render(
   <StrictMode>
-    <AppRouter />
+    <ThemeProvider>
+      <AppRouter />
+    </ThemeProvider>
   </StrictMode>,
 );

@@ -3,7 +3,7 @@
   width: min(1180px, calc(100vw - 32px));
   margin: 0 auto;
   padding: 132px 0 72px;
-  color: #0f172a;
+  color: var(--theme-text);
 }
 
 /* 顶部两栏布局：左侧说明，右侧搜索。桌面端并排，移动端在 media query 中改为纵向。 */
@@ -21,10 +21,10 @@
 .weather-daily-card,
 .weather-hourly-card,
 .weather-feedback {
-  border: 1px solid rgba(255, 255, 255, 0.62);
-  background: rgba(255, 255, 255, 0.42);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
-  backdrop-filter: blur(18px);
+  border: 1px solid var(--theme-border);
+  /* background: var(--theme-surface); */
+  box-shadow: 0 18px 40px var(--theme-shadow);
+  backdrop-filter: blur(5px);
 }
 
 /* 标题文案卡。 */
@@ -39,8 +39,8 @@
   align-items: center;
   padding: 6px 12px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.5);
-  color: #2563eb;
+  background: var(--theme-surface-subtle);
+  color: var(--theme-accent);
   font-size: 0.82rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -55,7 +55,7 @@
 .weather-hero-copy p {
   margin: 0;
   max-width: 40rem;
-  color: rgba(15, 23, 42, 0.72);
+  color: var(--theme-text-muted);
   font-size: 1rem;
   line-height: 1.7;
 }
@@ -69,7 +69,7 @@
 }
 
 .weather-search-label {
-  color: rgba(15, 23, 42, 0.76);
+  color: var(--theme-text-muted);
   font-size: 0.94rem;
   font-weight: 600;
 }
@@ -84,16 +84,16 @@
   flex: 1;
   min-width: 0;
   padding: 14px 16px;
-  border: 1px solid rgba(148, 163, 184, 0.28);
+  border: 1px solid var(--theme-border-soft);
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.72);
-  color: #0f172a;
+  background: var(--theme-surface-strong);
+  color: var(--theme-text);
   font-size: 1rem;
   outline: none;
 }
 
 .weather-search-input:focus {
-  border-color: rgba(96, 165, 250, 0.72);
+  border-color: var(--theme-accent-border);
   box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
 }
 
@@ -101,7 +101,7 @@
   padding: 0 20px;
   border: none;
   border-radius: 18px;
-  background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
+  background: var(--theme-primary-gradient);
   color: #fff;
   font-size: 0.95rem;
   font-weight: 700;
@@ -115,7 +115,7 @@
 
 .weather-search-tip {
   margin: 0;
-  color: rgba(15, 23, 42, 0.58);
+  color: var(--theme-text-muted);
   font-size: 0.85rem;
   line-height: 1.6;
 }
@@ -131,10 +131,10 @@
 .weather-suggestion-chip,
 .weather-hot-city-button {
   padding: 8px 14px;
-  border: 1px solid rgba(148, 163, 184, 0.24);
+  border: 1px solid var(--theme-border-soft);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.62);
-  color: #1e293b;
+  background: var(--theme-surface-strong);
+  color: var(--theme-text);
   font-size: 0.9rem;
   cursor: pointer;
   transition: border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
@@ -143,9 +143,9 @@
 .weather-suggestion-chip:hover,
 .weather-suggestion-chip-active,
 .weather-hot-city-button:hover {
-  border-color: rgba(96, 165, 250, 0.58);
-  background: rgba(219, 234, 254, 0.82);
-  color: #1d4ed8;
+  border-color: var(--theme-accent-border);
+  background: var(--theme-accent-soft);
+  color: var(--theme-accent);
 }
 
 .weather-hot-cities {
@@ -154,7 +154,7 @@
 }
 
 .weather-hot-cities-label {
-  color: rgba(15, 23, 42, 0.62);
+  color: var(--theme-text-muted);
   font-size: 0.88rem;
   font-weight: 600;
 }
@@ -164,13 +164,13 @@
   margin-top: 24px;
   padding: 18px 20px;
   border-radius: 22px;
-  color: #0f172a;
+  color: var(--theme-text);
 }
 
 .weather-feedback-error {
-  border-color: rgba(248, 113, 113, 0.24);
-  background: rgba(254, 242, 242, 0.82);
-  color: #b91c1c;
+  border-color: var(--theme-danger-border);
+  background: var(--theme-danger-surface);
+  color: var(--theme-danger-text);
 }
 
 /* 页面主体内容：摘要卡、逐日预报、小时预报三个模块纵向排列。 */
@@ -197,7 +197,7 @@
 .weather-summary-label,
 .weather-card-date {
   margin: 0;
-  color: #2563eb;
+  color: var(--theme-accent);
   font-size: 0.86rem;
   font-weight: 600;
 }
@@ -209,7 +209,7 @@
 
 .weather-summary-location {
   margin: 0;
-  color: rgba(15, 23, 42, 0.62);
+  color: var(--theme-text-muted);
 }
 
 /* 右侧三项摘要指标：日出、日落、预报天数。 */
@@ -226,7 +226,7 @@
   gap: 6px;
   padding: 16px 18px;
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.56);
+  background: var(--theme-surface-soft);
 }
 
 .weather-metric-icon {
@@ -237,7 +237,7 @@
 
 .weather-metric span {
   display: block;
-  color: rgba(37, 99, 235, 0.72);
+  color: var(--theme-accent);
   font-size: 0.8rem;
 }
 
@@ -260,7 +260,7 @@
 
 .weather-section-heading p {
   margin: 8px 0 0;
-  color: rgba(15, 23, 42, 0.62);
+  color: var(--theme-text-muted);
 }
 
 /* 逐日预报网格：根据可用宽度自动换列。 */
@@ -305,7 +305,7 @@
 
 .weather-card-temp {
   margin: 0;
-  color: #0f172a;
+  color: var(--theme-text);
   font-size: 1.28rem;
   font-weight: 700;
 }
@@ -321,12 +321,12 @@
   justify-content: space-between;
   gap: 16px;
   padding-top: 12px;
-  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  border-top: 1px solid var(--theme-divider);
 }
 
 .weather-card-details dt,
 .weather-hourly-card small {
-  color: rgba(15, 23, 42, 0.58);
+  color: var(--theme-text-muted);
 }
 
 .weather-card-details dd {
@@ -343,7 +343,7 @@
   padding: 2px 4px 10px;
   scroll-snap-type: x proximity;
   scrollbar-width: thin;
-  scrollbar-color: rgba(59, 130, 246, 0.4) rgba(255, 255, 255, 0.28);
+  scrollbar-color: var(--theme-scrollbar-thumb) var(--theme-scrollbar-track);
 }
 
 /* 单个小时卡片固定宽度，结合 scroll-snap 让横向滚动更整齐。 */
@@ -362,7 +362,7 @@
 }
 
 .weather-hourly-card span {
-  color: #0f172a;
+  color: var(--theme-text);
   font-weight: 600;
 }
 
@@ -372,10 +372,10 @@
   align-items: center;
   width: fit-content;
   padding: 8px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.52);
+  border: 1px solid var(--theme-border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.46);
-  color: rgba(15, 23, 42, 0.62);
+  background: var(--theme-surface-subtle);
+  color: var(--theme-text-muted);
   font-size: 0.85rem;
 }
 
@@ -385,12 +385,12 @@
 
 .weather-hourly-grid::-webkit-scrollbar-track {
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.32);
+  background: var(--theme-scrollbar-track);
 }
 
 .weather-hourly-grid::-webkit-scrollbar-thumb {
   border-radius: 999px;
-  background: rgba(59, 130, 246, 0.45);
+  background: var(--theme-scrollbar-thumb);
 }
 
 /* 骨架屏：加载中先占住布局位置，减少真实数据回来后的跳动。 */
@@ -402,7 +402,7 @@
 .weather-skeleton-metric {
   position: relative;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.56);
+  background: var(--theme-surface-soft);
 }
 
 /* 通过浅色高光横向移动制造骨架屏的 shimmer 效果。 */
@@ -412,7 +412,7 @@
   position: absolute;
   inset: 0;
   transform: translateX(-100%);
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.72) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, var(--theme-skeleton-highlight) 50%, transparent 100%);
   animation: weather-skeleton-shimmer 1.4s infinite;
 }
 
