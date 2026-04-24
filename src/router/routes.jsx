@@ -25,6 +25,11 @@ const ComponentCommunication = lazy(() => import("../view/study/ComponentCommuni
 // 返回：React 懒加载组件 Game。
 const Game = lazy(() => import("../components/Game/Game"));
 
+// 功能：懒加载天气预报页面组件。
+// 参数：一个返回 import Promise 的函数。
+// 返回：React 懒加载组件 WeatherForecast。
+const WeatherForecast = lazy(() => import("../view/weather/WeatherForecast"));
+
 // 功能：懒加载 404 页面组件。
 // 参数：一个返回 import Promise 的函数。
 // 返回：React 懒加载组件 NotFound。
@@ -100,6 +105,13 @@ export const navRoutes = [
         description: "props、状态提升与 context",
       },
     ],
+  },
+  {
+    path: "/weather",
+    element: WeatherForecast,
+    label: "天气",
+    icon: "weather",
+    showInTab: true,
   },
   {
     path: "/game",
