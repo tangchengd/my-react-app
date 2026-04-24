@@ -1,10 +1,12 @@
+/* 页面外层：继承全站宽度节奏，只负责天气页自己的上下留白和文字主色。 */
 .weather-page {
   width: min(1180px, calc(100vw - 32px));
   margin: 0 auto;
   padding: 132px 0 72px;
-  color: #e5eefc;
+  color: #0f172a;
 }
 
+/* 顶部两栏布局：左侧说明，右侧搜索。桌面端并排，移动端在 media query 中改为纵向。 */
 .weather-hero {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
@@ -12,30 +14,33 @@
   align-items: stretch;
 }
 
+/* 这组卡片共用白色毛玻璃基底，保证天气页和全站视觉一致。 */
 .weather-hero-copy,
 .weather-search,
 .weather-summary-card,
 .weather-daily-card,
 .weather-hourly-card,
 .weather-feedback {
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.66) 100%);
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.42);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
   backdrop-filter: blur(18px);
 }
 
+/* 标题文案卡。 */
 .weather-hero-copy {
   padding: 32px;
   border-radius: 32px;
 }
 
+/* 小标签：用于增强页面识别感，但视觉权重低于主标题。 */
 .weather-kicker {
   display: inline-flex;
   align-items: center;
   padding: 6px 12px;
   border-radius: 999px;
-  background: rgba(59, 130, 246, 0.16);
-  color: #93c5fd;
+  background: rgba(255, 255, 255, 0.5);
+  color: #2563eb;
   font-size: 0.82rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -50,11 +55,12 @@
 .weather-hero-copy p {
   margin: 0;
   max-width: 40rem;
-  color: rgba(226, 232, 240, 0.8);
+  color: rgba(15, 23, 42, 0.72);
   font-size: 1rem;
   line-height: 1.7;
 }
 
+/* 搜索卡：内部采用纵向排布，容纳输入框、联想词和热门城市。 */
 .weather-search {
   display: grid;
   gap: 16px;
@@ -63,11 +69,12 @@
 }
 
 .weather-search-label {
-  color: rgba(226, 232, 240, 0.82);
+  color: rgba(15, 23, 42, 0.76);
   font-size: 0.94rem;
   font-weight: 600;
 }
 
+/* 输入框和按钮横向排列，移动端会改成纵向。 */
 .weather-search-row {
   display: flex;
   gap: 12px;
@@ -77,10 +84,10 @@
   flex: 1;
   min-width: 0;
   padding: 14px 16px;
-  border: 1px solid rgba(148, 163, 184, 0.24);
+  border: 1px solid rgba(148, 163, 184, 0.28);
   border-radius: 18px;
-  background: rgba(15, 23, 42, 0.7);
-  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.72);
+  color: #0f172a;
   font-size: 1rem;
   outline: none;
 }
@@ -108,11 +115,12 @@
 
 .weather-search-tip {
   margin: 0;
-  color: rgba(148, 163, 184, 0.88);
+  color: rgba(15, 23, 42, 0.58);
   font-size: 0.85rem;
   line-height: 1.6;
 }
 
+/* 联想词和热门城市都采用胶囊按钮形式，视觉和交互保持统一。 */
 .weather-suggestions,
 .weather-hot-cities-list {
   display: flex;
@@ -123,10 +131,10 @@
 .weather-suggestion-chip,
 .weather-hot-city-button {
   padding: 8px 14px;
-  border: 1px solid rgba(148, 163, 184, 0.22);
+  border: 1px solid rgba(148, 163, 184, 0.24);
   border-radius: 999px;
-  background: rgba(15, 23, 42, 0.52);
-  color: #dbeafe;
+  background: rgba(255, 255, 255, 0.62);
+  color: #1e293b;
   font-size: 0.9rem;
   cursor: pointer;
   transition: border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
@@ -136,8 +144,8 @@
 .weather-suggestion-chip-active,
 .weather-hot-city-button:hover {
   border-color: rgba(96, 165, 250, 0.58);
-  background: rgba(37, 99, 235, 0.18);
-  color: #fff;
+  background: rgba(219, 234, 254, 0.82);
+  color: #1d4ed8;
 }
 
 .weather-hot-cities {
@@ -146,24 +154,26 @@
 }
 
 .weather-hot-cities-label {
-  color: rgba(191, 219, 254, 0.76);
+  color: rgba(15, 23, 42, 0.62);
   font-size: 0.88rem;
   font-weight: 600;
 }
 
+/* 加载和错误反馈区域：放在搜索区下方，避免打断主要布局。 */
 .weather-feedback {
   margin-top: 24px;
   padding: 18px 20px;
   border-radius: 22px;
-  color: #e2e8f0;
+  color: #0f172a;
 }
 
 .weather-feedback-error {
   border-color: rgba(248, 113, 113, 0.24);
-  background: rgba(127, 29, 29, 0.3);
-  color: #fecaca;
+  background: rgba(254, 242, 242, 0.82);
+  color: #b91c1c;
 }
 
+/* 页面主体内容：摘要卡、逐日预报、小时预报三个模块纵向排列。 */
 .weather-content {
   display: grid;
   gap: 28px;
@@ -174,6 +184,7 @@
   pointer-events: none;
 }
 
+/* 摘要卡内部采用左右分栏：左边地区信息，右边关键指标。 */
 .weather-summary-card {
   display: flex;
   align-items: center;
@@ -186,7 +197,7 @@
 .weather-summary-label,
 .weather-card-date {
   margin: 0;
-  color: #93c5fd;
+  color: #2563eb;
   font-size: 0.86rem;
   font-weight: 600;
 }
@@ -198,9 +209,10 @@
 
 .weather-summary-location {
   margin: 0;
-  color: rgba(226, 232, 240, 0.76);
+  color: rgba(15, 23, 42, 0.62);
 }
 
+/* 右侧三项摘要指标：日出、日落、预报天数。 */
 .weather-summary-metrics {
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, 1fr));
@@ -208,12 +220,13 @@
   width: min(420px, 100%);
 }
 
+/* 单个指标卡。 */
 .weather-metric {
   display: grid;
   gap: 6px;
   padding: 16px 18px;
   border-radius: 22px;
-  background: rgba(30, 41, 59, 0.66);
+  background: rgba(255, 255, 255, 0.56);
 }
 
 .weather-metric-icon {
@@ -224,7 +237,7 @@
 
 .weather-metric span {
   display: block;
-  color: rgba(191, 219, 254, 0.72);
+  color: rgba(37, 99, 235, 0.72);
   font-size: 0.8rem;
 }
 
@@ -234,6 +247,7 @@
   font-size: 1.2rem;
 }
 
+/* 内容分组的通用外层。 */
 .weather-section {
   display: grid;
   gap: 18px;
@@ -246,15 +260,17 @@
 
 .weather-section-heading p {
   margin: 8px 0 0;
-  color: rgba(226, 232, 240, 0.7);
+  color: rgba(15, 23, 42, 0.62);
 }
 
+/* 逐日预报网格：根据可用宽度自动换列。 */
 .weather-daily-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 18px;
 }
 
+/* 单个逐日卡片。 */
 .weather-daily-card {
   display: grid;
   gap: 16px;
@@ -274,6 +290,7 @@
   font-size: 1.05rem;
 }
 
+/* 日间/夜间图标区域，这里使用固定的 day/night 本地图标。 */
 .weather-card-icons {
   display: flex;
   gap: 8px;
@@ -288,7 +305,7 @@
 
 .weather-card-temp {
   margin: 0;
-  color: #f8fafc;
+  color: #0f172a;
   font-size: 1.28rem;
   font-weight: 700;
 }
@@ -304,12 +321,12 @@
   justify-content: space-between;
   gap: 16px;
   padding-top: 12px;
-  border-top: 1px solid rgba(148, 163, 184, 0.14);
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
 }
 
 .weather-card-details dt,
 .weather-hourly-card small {
-  color: rgba(191, 219, 254, 0.72);
+  color: rgba(15, 23, 42, 0.58);
 }
 
 .weather-card-details dd {
@@ -317,18 +334,27 @@
   text-align: right;
 }
 
+/* 小时预报改成单行横向滚动，而不是自动换行。
+   这样可以完整保留接口返回的时段数量，同时让卡片宽度更稳定。 */
 .weather-hourly-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  display: flex;
   gap: 14px;
+  overflow-x: auto;
+  padding: 2px 4px 10px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.4) rgba(255, 255, 255, 0.28);
 }
 
+/* 单个小时卡片固定宽度，结合 scroll-snap 让横向滚动更整齐。 */
 .weather-hourly-card {
   display: grid;
   justify-items: start;
   gap: 10px;
+  flex: 0 0 156px;
   padding: 18px;
   border-radius: 24px;
+  scroll-snap-align: start;
 }
 
 .weather-hourly-card strong {
@@ -336,10 +362,38 @@
 }
 
 .weather-hourly-card span {
-  color: #f8fafc;
+  color: #0f172a;
   font-weight: 600;
 }
 
+/* 滑动提示：告诉用户这块内容不是截断，而是可以继续横向浏览。 */
+.weather-hourly-hint {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.46);
+  color: rgba(15, 23, 42, 0.62);
+  font-size: 0.85rem;
+}
+
+.weather-hourly-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.weather-hourly-grid::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.32);
+}
+
+.weather-hourly-grid::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.45);
+}
+
+/* 骨架屏：加载中先占住布局位置，减少真实数据回来后的跳动。 */
 .weather-skeleton-card {
   overflow: hidden;
 }
@@ -348,16 +402,17 @@
 .weather-skeleton-metric {
   position: relative;
   border-radius: 16px;
-  background: rgba(148, 163, 184, 0.14);
+  background: rgba(255, 255, 255, 0.56);
 }
 
+/* 通过浅色高光横向移动制造骨架屏的 shimmer 效果。 */
 .weather-skeleton-block::after,
 .weather-skeleton-metric::after {
   content: "";
   position: absolute;
   inset: 0;
   transform: translateX(-100%);
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.18) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.72) 50%, transparent 100%);
   animation: weather-skeleton-shimmer 1.4s infinite;
 }
 
@@ -408,6 +463,7 @@
   }
 }
 
+/* 平板下：顶部双栏变单栏，摘要指标自动换列。 */
 @media (max-width: 900px) {
   .weather-page {
     width: min(100vw - 24px, 1180px);
@@ -426,6 +482,7 @@
   }
 }
 
+/* 手机下：进一步收紧圆角和间距，并把搜索输入改成纵向。 */
 @media (max-width: 640px) {
   .weather-page {
     width: calc(100vw - 16px);

@@ -29,6 +29,11 @@ const WEATHER_ICON_MAP = {
   雾: wuIcon,
 };
 
+// 功能：把常见天气文案先做一层“精确映射”。
+// 参数：无。
+// 返回：天气中文描述到本地图标资源的对照表。
+// 说明：如果接口返回的是更复杂的组合天气，例如“阵雨转多云”，会在 getWeatherIconByCondition 里继续走兜底匹配。
+
 // 功能：根据接口返回的中文天气描述，映射到本地天气图标。
 // 参数：condition，天气描述文本。
 // 返回：对应的本地图片路径。
@@ -188,6 +193,13 @@ function formatDate(value) {
 // 参数：无。
 // 返回：天气查询页面 JSX。
 export default function WeatherForecast() {
+  // 这几个状态分别负责：
+  // - query：真正用于发请求的城市名
+  // - keyword：输入框当前内容
+  // - weatherData：接口成功后的天气数据
+  // - loading：请求中的加载态
+  // - error：错误提示文案
+  // - activeSuggestion：键盘上下选择时当前高亮的联想项索引
   const [query, setQuery] = useState(DEFAULT_QUERY);
   const [keyword, setKeyword] = useState(DEFAULT_QUERY);
   const [weatherData, setWeatherData] = useState(null);
@@ -195,9 +207,13 @@ export default function WeatherForecast() {
   const [error, setError] = useState("");
   const [activeSuggestion, setActiveSuggestion] = useState(-1);
 
+  // 根据输入框内容实时生成联想列表。
+  // 这里不走接口，直接用本地热门城市做轻量筛选，避免输入时产生额外网络请求。
   const suggestions = getSuggestions(keyword);
 
   useEffect(() => {
+    // 每次 query 改变都创建一个新的取消控制器。
+    // 这样用户连续切城市时，旧请求会被主动中断，避免后返回的数据覆盖新结果。
     const controller = new AbortController();
 
     async function loadWeather() {
@@ -234,6 +250,8 @@ export default function WeatherForecast() {
   }, [query]);
 
   useEffect(() => {
+    // 输入内容一变化，就把联想高亮重置到“未选中”状态。
+    // 这样可以避免上一次的方向键选中状态错误复用到新的联想列表上。
     setActiveSuggestion(-1);
   }, [keyword]);
 
@@ -293,6 +311,7 @@ export default function WeatherForecast() {
 
   return (
     <section className="weather-page">
+      {/* 顶部首屏区域：左侧是页面标题，右侧是搜索入口。 */}
       <div className="weather-hero">
         <div className="weather-hero-copy">
           <span className="weather-kicker">Weather Forecast</span>
@@ -304,6 +323,8 @@ export default function WeatherForecast() {
           <label className="weather-search-label" htmlFor="weather-query">
             城市名称
           </label>
+
+          {/* 搜索输入区：支持直接查询，也支持键盘联想选择。 */}
           <div className="weather-search-row">
             <input
               id="weather-query"
@@ -319,6 +340,8 @@ export default function WeatherForecast() {
               {loading ? "查询中..." : "查询天气"}
             </button>
           </div>
+
+          {/* 联想词区：展示根据当前输入实时生成的候选城市。 */}
           <div className="weather-suggestions" aria-label="搜索联想">
             {suggestions.map((city, index) => (
               <button
@@ -331,6 +354,8 @@ export default function WeatherForecast() {
               </button>
             ))}
           </div>
+
+          {/* 热门城市区：提供几个固定快捷入口，降低首次使用成本。 */}
           <div className="weather-hot-cities" aria-label="热门城市">
             <span className="weather-hot-cities-label">热门城市</span>
             <div className="weather-hot-cities-list">
@@ -345,9 +370,11 @@ export default function WeatherForecast() {
         </form>
       </div>
 
+      {/* 错误提示区：只有请求失败或输入无效时才展示。 */}
       {error ? <div className="weather-feedback weather-feedback-error">{error}</div> : null}
 
       {loading ? (
+        // 骨架屏结构尽量贴近最终布局，这样加载完成后页面跳动会更小。
         <div className="weather-content weather-content-loading" aria-hidden="true">
           <section className="weather-summary-card weather-skeleton-card">
             <div className="weather-skeleton-block weather-skeleton-title" />
@@ -398,6 +425,7 @@ export default function WeatherForecast() {
 
       {!loading && weatherData ? (
         <div className="weather-content">
+          {/* 顶部摘要卡：概览当前地区、日出日落和预报天数。 */}
           <section className="weather-summary-card">
             <div>
               <p className="weather-summary-label">当前城市</p>
@@ -425,10 +453,10 @@ export default function WeatherForecast() {
             </div>
           </section>
 
+          {/* 逐日预报区：适合看未来几天整体趋势。 */}
           <section className="weather-section">
             <div className="weather-section-heading">
               <h3>未来天气</h3>
-              <p>展示接口返回的逐日预报。</p>
             </div>
 
             <div className="weather-daily-grid">
@@ -476,13 +504,15 @@ export default function WeatherForecast() {
             </div>
           </section>
 
+          {/* 小时预报区：改成横向滚动，保留更多时段数据。 */}
           <section className="weather-section">
             <div className="weather-section-heading">
               <h3>小时预报</h3>
-              <p>默认展示最近 12 条小时天气，便于快速查看温度变化。</p>
             </div>
 
-            <div className="weather-hourly-grid">
+            <div className="weather-hourly-hint">左右滑动查看更多时段天气</div>
+
+            <div className="weather-hourly-grid" role="region" aria-label="小时预报滚动列表">
               {hourlyForecast.map((item) => (
                 <article className="weather-hourly-card" key={item.datetime}>
                   <p className="weather-card-date">{formatDateTime(item.datetime)}</p>
